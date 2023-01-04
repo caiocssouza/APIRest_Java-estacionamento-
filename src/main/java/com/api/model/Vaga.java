@@ -1,4 +1,4 @@
-package model;
+package com.api.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,8 +16,10 @@ import jakarta.persistence.Table;
 public class Vaga implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	
 	@Column(nullable = false, unique = true, length =10)
@@ -39,7 +41,7 @@ public class Vaga implements Serializable {
 	private LocalDateTime dataRegistro;
 	
 	@Column(nullable = false, length =100)
-	private String Morador;
+	private String morador;
 	
 	@Column(nullable = false, length =10)
 	private String apartamento;
@@ -104,11 +106,11 @@ public class Vaga implements Serializable {
 	}
 
 	public String getMorador() {
-		return Morador;
+		return morador;
 	}
 
 	public void setMorador(String morador) {
-		Morador = morador;
+		this.morador = morador;
 	}
 
 	public String getApartamento() {
