@@ -30,8 +30,10 @@ public class EstacionamentoController {
 	
 	//requestbody recebe e envia dados em formato json / valid valida as validações da calsse dto
 	@PostMapping
-	public ResponseEntity<Object> saveEstacionamento(@RequestBody @Valid EstacionamentoDTO estacionamentoDTO){
-	
+	public ResponseEntity <Object> saveEstacionamento(@RequestBody @Valid EstacionamentoDTO estacionamentoDTO){
+		if(estacionamentoService.existePlaca(estacionamentoDTO.getPlacaCarro())) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("PLACA JÁ CADASTRADA");
+		}
 		Vaga vaga = new Vaga();//converte dto em objeto de Vaga
 		BeanUtils.copyProperties(estacionamentoDTO, vaga);//converte o dto em um objeto de Vaga
 		vaga.setDataRegistro(LocalDateTime.now(ZoneId.of("UTC")));//setando a data que não foi instanciada no dto

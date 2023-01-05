@@ -19,6 +19,10 @@ public class EstacionamentoService {
 	public Vaga save(Vaga vaga) {
 		return estacionamentoRepository.save(vaga);
 	}
+	public boolean existePlaca(String placaCarro) {
+		
+		return estacionamentoRepository.existePlaca(placaCarro);
+	}
 
 }
 

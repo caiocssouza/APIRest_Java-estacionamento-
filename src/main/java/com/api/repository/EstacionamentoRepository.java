@@ -10,5 +10,6 @@ import com.api.model.Vaga;
 @Repository
 public interface EstacionamentoRepository extends JpaRepository<Vaga, UUID> {
 	
+	boolean existePlaca(String placaCarro);
 	
 }
